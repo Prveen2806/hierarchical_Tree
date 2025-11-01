@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { TreeComponent } from './components/tree/tree.component';
 import { TreeNodeComponent } from './components/tree-node/tree-node.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TreeComponent,
-    TreeNodeComponent
+    TreeNodeComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
