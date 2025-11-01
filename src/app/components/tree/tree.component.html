@@ -1,0 +1,29 @@
+<h3>Dynamic Tree Builder</h3>
+<form [formGroup]="treeForm" class="tree-form">
+  <div formArrayName="nodes">
+    <div *ngFor="let node of nodes.controls; let i = index" [formGroupName]="i" style="margin: 5px 0px 5px 0px;" class="node-row">
+      <input type="text" formControlName="parent" placeholder="Parent (e.g. a)" />
+      <input type="text" formControlName="children" placeholder="Children (comma separated, e.g. b,c)" />
+      <button type="button" (click)="removeNode(i)" *ngIf="nodes.length > 1">Remove</button>
+    </div>
+  </div>
+  <button type="button" (click)="addNode()">Add Node</button>
+</form>
+
+<hr />
+
+<h4>Tree Output:</h4>
+
+<div *ngIf="root">
+  <ul>
+    <li>
+      {{ root }}
+      <ul>
+        <ng-container *ngFor="let child of treeData[root]">
+          <app-tree-node [node]="child" [tree]="treeData"></app-tree-node>
+        </ng-container>
+      </ul>
+    </li>
+  </ul>
+</div>
+<pre>{{ treeData | json }}</pre>
